@@ -59,10 +59,6 @@ class ViewController: UIViewController {
     
     var storeOpen = false
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = .lightGray
-    }
     
     func openStore() {
         storeOpen = true
