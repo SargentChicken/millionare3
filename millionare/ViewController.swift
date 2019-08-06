@@ -287,4 +287,6 @@ class ViewController: UIViewController {
         perClick.text = "$ Per Click: \(amountPerSale)"
     }
     
+    // Start button goes here!!!
+    
 }
