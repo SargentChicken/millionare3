@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     enum BusinessType {
         case lemonadeStand
         case carWash
+        case lawnCare
     }
     
     enum LemonadeStandValue: Int {
@@ -29,8 +30,12 @@ class ViewController: UIViewController {
         case five = 125
     }
     
-    enum lawnMowingValue: Int {
+    enum lawnCareValue: Int {
         case one = 150
+        case two = 175
+        case three = 200
+        case four = 250
+        case five = 300
     }
     
     enum BusinessLevel: Int {
@@ -107,6 +112,7 @@ class ViewController: UIViewController {
     var businessLevelList = BusinessLevel.one
     var lemonadeStandUpgrade = LemonadeStandValue.two
     var carWashUpgrade = CarWashValue.one
+    var lawnCareUpgarde = lawnCareValue.one
     var costOfNextUpgrade = 50
     var timer = Timer()
     var on = false
@@ -162,24 +168,29 @@ class ViewController: UIViewController {
     }
     
     func upgradeLemonadeStand() {
+        guard money >= costOfNextUpgrade else {
+            return
+        }
+        
         switch lemonadeStandUpgrade {
-        case .two:
+            
+        case LemonadeStandValue.two:
             costOfNextUpgrade = 250
             amountPerSale = LemonadeStandValue.two.rawValue
             businessLevelList = BusinessLevel.two
             lemonadeStandUpgrade = LemonadeStandValue.three
-        case .three:
+        case LemonadeStandValue.three:
             costOfNextUpgrade = 500
             amountPerSale = LemonadeStandValue.three.rawValue
             businessLevelList = BusinessLevel.three
             lemonadeStandUpgrade = LemonadeStandValue.four
-        case .four:
+        case LemonadeStandValue.four:
             costOfNextUpgrade = 1000
             amountPerSale = LemonadeStandValue.four.rawValue
             businessLevelList = BusinessLevel.four
             lemonadeStandUpgrade = LemonadeStandValue.five
             
-        case .five:
+        case LemonadeStandValue.five:
             costOfNextUpgrade = 10000
             amountPerSale = LemonadeStandValue.five.rawValue
             businessLevelList = BusinessLevel.five
@@ -194,7 +205,7 @@ class ViewController: UIViewController {
         }
         
         switch carWashUpgrade {
-        case .one:
+        case CarWashValue.one:
             buisnessButton.setImage(#imageLiteral(resourceName: "car"), for: .normal)
             costOfNextUpgrade = 25000
             amountPerSale = CarWashValue.one.rawValue
@@ -204,22 +215,58 @@ class ViewController: UIViewController {
             costOfNextUpgrade = 50000
             amountPerSale = CarWashValue.two.rawValue
             businessLevelList = BusinessLevel.two
-            carWashUpgrade = CarWashValue.two
+            carWashUpgrade = CarWashValue.three
         case CarWashValue.three:
             costOfNextUpgrade = 100000
             amountPerSale = CarWashValue.three.rawValue
             businessLevelList = BusinessLevel.three
             carWashUpgrade = CarWashValue.four
-        case .four:
+        case CarWashValue.four:
             costOfNextUpgrade = 175000
             amountPerSale = CarWashValue.four.rawValue
             businessLevelList = BusinessLevel.four
             carWashUpgrade = CarWashValue.five
-        case .five:
-            costOfNextUpgrade = 25000
+        case CarWashValue.five:
+            costOfNextUpgrade = 250000
             amountPerSale = CarWashValue.five.rawValue
             businessLevelList = BusinessLevel.five
             carWashUpgrade = CarWashValue.five
+            typeOfBusiness = .lawnCare
+        }
+    }
+    
+    func upgradeLawnCare(){
+        guard money >= costOfNextUpgrade else {
+            return
+        }
+        
+        switch lawnCareUpgarde {
+        case lawnCareValue.one:
+            buisnessButton.setImage(#imageLiteral(resourceName: "lawn"), for: .normal)
+            costOfNextUpgrade = 300000
+            amountPerSale = lawnCareValue.one.rawValue
+            businessLevelList = BusinessLevel.one
+            lawnCareUpgarde = lawnCareValue.two
+        case lawnCareValue.two:
+            costOfNextUpgrade = 350000
+            amountPerSale = lawnCareValue.two.rawValue
+            businessLevelList = BusinessLevel.two
+            lawnCareUpgarde = lawnCareValue.three
+        case lawnCareValue.three:
+            costOfNextUpgrade = 400000
+            amountPerSale = lawnCareValue.three.rawValue
+            businessLevelList = BusinessLevel.three
+            lawnCareUpgarde = lawnCareValue.four
+        case lawnCareValue.four:
+            costOfNextUpgrade = 500000
+            amountPerSale = lawnCareValue.four.rawValue
+            businessLevelList = BusinessLevel.four
+            lawnCareUpgarde = lawnCareValue.five
+        case lawnCareValue.five:
+            costOfNextUpgrade = 650000
+            amountPerSale = lawnCareValue.five.rawValue
+            businessLevelList = BusinessLevel.five
+            lawnCareUpgarde = lawnCareValue.five
         }
     }
     
@@ -231,6 +278,8 @@ class ViewController: UIViewController {
             upgradeLemonadeStand()
         } else if typeOfBusiness == .carWash {
             upgradeCarWash()
+        } else if typeOfBusiness == .lawnCare {
+            upgradeLawnCare()
         }
         updateLabels()
         

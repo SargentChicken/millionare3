@@ -41,7 +41,7 @@
                                 <rect key="frame" x="28" y="181" width="319" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.39654572319999998" green="0.71952044449999997" blue="0.0061816213440000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <state key="normal" title="Buy Helpers">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -68,7 +68,7 @@
                                 <rect key="frame" x="28" y="262" width="319" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.39654572319999998" green="0.71952044449999997" blue="0.0061816213440000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <state key="normal" title="Upgrade">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -129,9 +129,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backArrow" width="512" height="512"/>
+        <image name="backArrow" width="21.345685958862305" height="21.345685958862305"/>
         <image name="header" width="200" height="100"/>
-        <image name="lemonade" width="635" height="612"/>
+        <image name="lemonade" width="476.25" height="459"/>
         <image name="shop" width="980" height="858"/>
     </resources>
 </document>
