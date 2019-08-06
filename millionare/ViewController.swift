@@ -59,7 +59,6 @@ class ViewController: UIViewController {
     
     var storeOpen = false
     
-    
     func openStore() {
         storeOpen = true
         buisnessButton.alpha = 0
