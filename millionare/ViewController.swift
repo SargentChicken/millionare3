@@ -268,16 +268,17 @@ class ViewController: UIViewController {
             return
         }
         money -= costOfNextUpgrade
-        if typeOfBusiness == .lemonadeStand {
+        
+        switch typeOfBusiness {
+        case .lemonadeStand :
             upgradeLemonadeStand()
-        } else if typeOfBusiness == .carWash {
+        case .carWash:
             upgradeCarWash()
-        } else if typeOfBusiness == .lawnCare {
+        case .lawnCare:
             upgradeLawnCare()
         }
+        
         updateLabels()
-        
-        
         perClick.text = "$ Per Click: \(amountPerSale)"
     }
     
