@@ -14,6 +14,7 @@
 		591359DF22C85C370026C553 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 591359DD22C85C370026C553 /* LaunchScreen.storyboard */; };
 		591359EA22C85C380026C553 /* millionareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591359E922C85C380026C553 /* millionareTests.swift */; };
 		591359F522C85C380026C553 /* millionareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591359F422C85C380026C553 /* millionareUITests.swift */; };
+		59EAC2552301FC4C007F11C9 /* LogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EAC2542301FC4B007F11C9 /* LogicController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		591359F022C85C380026C553 /* millionareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = millionareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		591359F422C85C380026C553 /* millionareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = millionareUITests.swift; sourceTree = "<group>"; };
 		591359F622C85C380026C553 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		59EAC2542301FC4B007F11C9 /* LogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				591359D422C85C370026C553 /* AppDelegate.swift */,
 				591359D622C85C370026C553 /* ViewController.swift */,
+				59EAC2542301FC4B007F11C9 /* LogicController.swift */,
 				591359D822C85C370026C553 /* Main.storyboard */,
 				591359DB22C85C370026C553 /* Assets.xcassets */,
 				591359DD22C85C370026C553 /* LaunchScreen.storyboard */,
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				591359D722C85C370026C553 /* ViewController.swift in Sources */,
+				59EAC2552301FC4C007F11C9 /* LogicController.swift in Sources */,
 				591359D522C85C370026C553 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
