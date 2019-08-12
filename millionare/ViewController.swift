@@ -259,6 +259,7 @@ class ViewController: UIViewController {
         case .lawnCare:
             upgradeLawnCare()
         }
+      
         updateLabels()
         perClick.text = "$ Per Click: \(amountPerSale)"
     }
