@@ -54,10 +54,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var upgradeButton: UIButton!
     @IBOutlet weak var addHelper: UIButton!
     @IBOutlet weak var storeButton: UIButton!
+    @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var perClick: UILabel!
     @IBOutlet weak var perSecond: UILabel!
     
     var storeOpen = false
+    var money = 0
+    var amountPerSale = 1
+    var businessLevelList = BusinessLevel.one
+    var lemonadeStandUpgrade = LemonadeStandValue.two
+    var carWashUpgrade = CarWashValue.one
+    var lawnCareUpgarde = lawnCareValue.one
+    var costOfNextUpgrade = 50
+    var timer = Timer()
+    var numberOfHelpers = 1
+    var helperCost = 1
+    var helperMultiplier = 1
+    var helperLimit = 5
+    var typeOfBusiness = BusinessType.lemonadeStand
     
     func openStore() {
         storeOpen = true
@@ -86,17 +100,16 @@ class ViewController: UIViewController {
         messageLabel.text = "Just keep taping, taping, taping!"
     }
     
-    var money = 0
-    var amountPerSale = 1
-    
-    @IBAction func storeButton(_ sender: UIButton) {
-        openStore()
+    func makeUiAppear() {
+        buisnessButton.alpha = 1
+        buisnessLevelLabel.alpha = 1
+        moneyLabel.alpha = 1
+        storeButton.alpha = 1
+        perClick.alpha = 1
+        perSecond.alpha = 1
+        messageLabel.text = "Just keep taping, taping, taping!"
+        startButton.alpha = 0
     }
-    
-    @IBAction func backButton(_ sender: UIButton) {
-        closeStore()
-    }
-    
     
     func makeSale() {
         money += amountPerSale
@@ -107,20 +120,8 @@ class ViewController: UIViewController {
         buisnessLevelLabel.text = "\(businessLevelList.rawValue)"
         upgradeButton.setTitle("Upgrade $\(costOfNextUpgrade)", for: .normal)
         moneyLabel.text = String("$\(money)")
+        perClick.text = "$ Per Click: \(amountPerSale)"
     }
-    
-    var businessLevelList = BusinessLevel.one
-    var lemonadeStandUpgrade = LemonadeStandValue.two
-    var carWashUpgrade = CarWashValue.one
-    var lawnCareUpgarde = lawnCareValue.one
-    var costOfNextUpgrade = 50
-    var timer = Timer()
-    var on = false
-    var numberOfHelpers = 1
-    var helperCost = 1
-    var helperMultiplier = 1
-    var helperLimit = 5
-    var typeOfBusiness = BusinessType.lemonadeStand
     
     func activateHelpers(on: Bool) {
         
@@ -128,7 +129,6 @@ class ViewController: UIViewController {
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] (_) in
                 
                 guard let strongSelf = self else { return }
-                strongSelf.on = true
                 strongSelf.money += strongSelf.numberOfHelpers * strongSelf.helperMultiplier
                 strongSelf.moneyLabel.text = "$\(strongSelf.money)"
                 
@@ -136,35 +136,6 @@ class ViewController: UIViewController {
         } else {
             timer.invalidate()
         }
-    }
-    
-    
-    @IBAction func buisnessButton(_ sender: UIButton) {
-        makeSale()
-        
-        if on {
-            timer.invalidate()
-            on = false
-        } else {
-            activateHelpers(on: true)
-            on = true
-        }
-    }
-    
-    
-    @IBAction func purchaseHelperButton(_ sender: UIButton) {
-        if money >= helperCost && numberOfHelpers < helperLimit {
-            money -= helperCost
-            numberOfHelpers += 1
-            addHelper.setTitle("Buy Helper $\(helperCost)", for: .normal)
-            helperCost = helperCost * 2
-            messageLabel.text = "Tap to wake up your helpers!"
-        } else if money < helperCost {
-            messageLabel.text = "Not enough money"
-        } else {
-            messageLabel.text = "Helper limit reached!"
-        }
-        perSecond.text = "$ Per Second: \(numberOfHelpers * helperMultiplier)"
     }
     
     func upgradeLemonadeStand() {
@@ -261,6 +232,17 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func buisnessButton(_ sender: UIButton) {
+        makeSale()
+    }
+    
+    @IBAction func storeButton(_ sender: UIButton) {
+        openStore()
+    }
+    
+    @IBAction func backButton(_ sender: UIButton) {
+        closeStore()
+    }
     
     @IBAction func upgradeButton(_ sender: UIButton) {
         
@@ -277,9 +259,27 @@ class ViewController: UIViewController {
         case .lawnCare:
             upgradeLawnCare()
         }
-        
+      
         updateLabels()
         perClick.text = "$ Per Click: \(amountPerSale)"
     }
     
+    @IBAction func startButton(_ sender: UIButton) {
+        activateHelpers(on: true)
+        makeUiAppear()
+    }
+    
+    @IBAction func purchaseHelperButton(_ sender: UIButton) {
+        if money >= helperCost && numberOfHelpers < helperLimit {
+            money -= helperCost
+            numberOfHelpers += 1
+            helperCost = helperCost * 2
+            addHelper.setTitle("Buy Helper $\(helperCost)", for: .normal)
+        } else if money < helperCost {
+            messageLabel.text = "Not enough money"
+        } else {
+            messageLabel.text = "Helper limit reached!"
+        }
+        perSecond.text = "$ Per Second: \(numberOfHelpers * helperMultiplier)"
+    }
 }
