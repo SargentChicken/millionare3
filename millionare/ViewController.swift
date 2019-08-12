@@ -139,9 +139,6 @@ class ViewController: UIViewController {
     }
     
     func upgradeLemonadeStand() {
-        guard money >= costOfNextUpgrade else {
-            return
-        }
         
         switch lemonadeStandUpgrade {
             
@@ -171,9 +168,6 @@ class ViewController: UIViewController {
     }
     
     func upgradeCarWash() {
-        guard money >= costOfNextUpgrade else {
-            return
-        }
         
         switch carWashUpgrade {
         case CarWashValue.one:
@@ -207,9 +201,6 @@ class ViewController: UIViewController {
     }
     
     func upgradeLawnCare(){
-        guard money >= costOfNextUpgrade else {
-            return
-        }
         
         switch lawnCareUpgarde {
         case lawnCareValue.one:
@@ -255,24 +246,21 @@ class ViewController: UIViewController {
     
     @IBAction func upgradeButton(_ sender: UIButton) {
         
+        guard money >= costOfNextUpgrade else {
+            return
+        }
         money -= costOfNextUpgrade
-        if typeOfBusiness == .lemonadeStand {
+        
+        switch typeOfBusiness {
+        case .lemonadeStand :
             upgradeLemonadeStand()
-        } else if typeOfBusiness == .carWash {
+        case .carWash:
             upgradeCarWash()
-        } else if typeOfBusiness == .lawnCare {
+        case .lawnCare:
             upgradeLawnCare()
         }
         updateLabels()
-<<<<<<< Updated upstream
-        
-        
         perClick.text = "$ Per Click: \(amountPerSale)"
-    }
-    
-    // Start button goes here!!!
-    
-=======
     }
     
     @IBAction func startButton(_ sender: UIButton) {
@@ -293,5 +281,4 @@ class ViewController: UIViewController {
         }
         perSecond.text = "$ Per Second: \(numberOfHelpers * helperMultiplier)"
     }
->>>>>>> Stashed changes
 }
